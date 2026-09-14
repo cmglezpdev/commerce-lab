@@ -1,0 +1,36 @@
+using System.Globalization;
+
+namespace Commerce.Domain.Common;
+
+public readonly record struct Money(decimal amount, Currency currency)
+{
+    public decimal Amount => amount;
+    public Currency Currency => currency;
+
+    public static Money operator +(Money left, Money right)
+    {
+        if(left.Currency != right.Currency)
+        {
+            throw new InvalidOperationException("Cannot add amounts with different currencies.");
+        }
+
+        return new Money(left.Amount + right.Amount, left.Currency);
+    }
+
+    public override string ToString()
+    {
+        var symbol = Currency switch
+        {
+            Currency.Usd => "$",
+            Currency.Mxn => "MX$",
+            Currency.Eur => "€",
+            _ => throw new ArgumentOutOfRangeException("Unsupported currency.")
+        };
+
+        var amount = Amount.ToString(
+            "0.00",
+            CultureInfo.InvariantCulture);
+
+        return $"{symbol}{amount} {Currency.ToString().ToUpperInvariant()}";
+    }
+}
