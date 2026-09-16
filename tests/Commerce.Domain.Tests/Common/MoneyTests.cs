@@ -19,4 +19,22 @@ public class MoneyTests
     
         Assert.Throws<InvalidOperationException>(() => dollars + euros);
     }
+
+    [Fact]
+    public void MoneyZero_ShouldReturnZeroMoney()
+    {
+        var zeroUsd = Money.Zero(Currency.Eur);
+        Assert.Equal(new Money(0, Currency.Eur), zeroUsd);
+    }
+
+    [Fact]
+    public void Money_ShouldComputeMultiplyCorrectly()
+    {
+        var price = new Money(1299.5m, Currency.Usd);
+        var quantity = new Quantity(2);
+        
+        var result = price * quantity;
+
+        Assert.Equal(new Money(2599.0m, Currency.Usd), result);
+    }
 }

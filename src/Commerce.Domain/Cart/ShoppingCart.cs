@@ -1,13 +1,13 @@
 using Commerce.Domain.Catalog;
 using Commerce.Domain.Common;
 
-namespace Commerce.Domain.ShoppingCart;
+namespace Commerce.Domain.Cart;
 
-public sealed class ShoppingShoppingCart
+public sealed class ShoppingCart
 {
     private List<ShoppingCartLine> Items { get; set; } = [];
     
-    public ShoppingShoppingCart(){}
+    public ShoppingCart(){}
 
     public void AddQuantity(SellableItemId itemId, Quantity quantity)
     {

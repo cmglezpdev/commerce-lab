@@ -47,6 +47,18 @@ public class ShoppingCartTests
     }
 
     [Fact]
+    public void ReduceQuantity_ShouldThrowError_WhenReducingMoreThanExistingQuantity()
+    {
+        var cart = new ShoppingCart();
+        var itemId = SellableItemId.New();
+        cart.AddQuantity(itemId, new Quantity(2));
+
+        var exception = Assert.Throws<ArgumentOutOfRangeException>(() => 
+            cart.ReduceQuantity(itemId, new Quantity(3)));
+        Assert.Contains("Quantity to reduce exceeds the current quantity.", exception.Message);
+    }
+
+    [Fact]
     public void AddSameItem_ShouldIncreaseQuantity()
     {
         var itemId = SellableItemId.New();

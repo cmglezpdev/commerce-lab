@@ -17,6 +17,16 @@ public readonly record struct Money(decimal amount, Currency currency)
         return new Money(left.Amount + right.Amount, left.Currency);
     }
 
+    public static Money Zero(Currency currency)
+    {
+        return new Money(0, currency);
+    }
+
+    public static Money operator *(Money left, Quantity quantity)
+    {
+        return new Money(left.Amount * quantity.Value, left.Currency);
+    }
+
     public override string ToString()
     {
         var symbol = Currency switch
