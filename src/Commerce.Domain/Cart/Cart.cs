@@ -44,7 +44,7 @@ public sealed class ShoppingCart
         }
     }
 
-    public int Count => Items.Count();
+    public int Count => Items.Count;
     public int TotalQuantity => Items.Sum(item => item.Quantity.Value);
 
     public IReadOnlyList<CartLine> GetItems => [.. Items];
