@@ -1,13 +1,13 @@
 using Commerce.Domain.Catalog;
 using Commerce.Domain.Common;
 
-namespace Commerce.Domain.Cart;
+namespace Commerce.Domain.ShoppingCart;
 
-public sealed class ShoppingCart
+public sealed class ShoppingShoppingCart
 {
-    private List<CartLine> Items { get; set; } = [];
+    private List<ShoppingCartLine> Items { get; set; } = [];
     
-    public ShoppingCart(){}
+    public ShoppingShoppingCart(){}
 
     public void AddQuantity(SellableItemId itemId, Quantity quantity)
     {
@@ -18,7 +18,7 @@ public sealed class ShoppingCart
         }
         else
         {
-            Items.Add(new CartLine(itemId, quantity));
+            Items.Add(new ShoppingCartLine(itemId, quantity));
         }
     }
 
@@ -47,11 +47,11 @@ public sealed class ShoppingCart
     public int Count => Items.Count;
     public int TotalQuantity => Items.Sum(item => item.Quantity.Value);
 
-    public IReadOnlyList<CartLine> GetItems => [.. Items];
+    public IReadOnlyList<ShoppingCartLine> GetItems => [.. Items];
 }
 
 
-public sealed class CartLine(
+public sealed class ShoppingCartLine(
     SellableItemId sellableItemId,
     Quantity quantity
 )
