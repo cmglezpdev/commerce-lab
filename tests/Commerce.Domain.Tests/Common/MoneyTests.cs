@@ -1,18 +1,18 @@
 using Commerce.Domain.Common;
 
-namespace Commerce.Domain.Tests;
+namespace Commerce.Domain.Tests.Common;
 
 public class MoneyTests
 {
     [Fact]
-    public void Formats_amount_with_currency_symbol_and_code()
+    public void Money_ShouldFormatCorrectly()
     {
         var price = new Money(1299.5m, Currency.Usd);
         Assert.Equal("$1299.50 USD", price.ToString());
     }
 
     [Fact]
-    public void Cannot_add_different_currencies()
+    public void AddDifferentCurrencies_ShouldThrowError()
     {
         var dollars = new Money(1299.5m, Currency.Usd);
         var euros = new Money(30.0m, Currency.Eur);
