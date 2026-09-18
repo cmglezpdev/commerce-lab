@@ -32,7 +32,7 @@ public sealed class ShoppingCart
 
         if(remaining < 0)
         {
-            throw new ArgumentException("Cannot reduce quantity below zero.", nameof(quantity));
+            throw new ArgumentOutOfRangeException(nameof(quantity), "Cannot reduce quantity below zero.");
         }
 
         if(remaining > 0)

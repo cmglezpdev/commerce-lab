@@ -55,7 +55,7 @@ public class ShoppingCartTests
 
         var exception = Assert.Throws<ArgumentOutOfRangeException>(() => 
             cart.ReduceQuantity(itemId, new Quantity(3)));
-        Assert.Contains("Quantity to reduce exceeds the current quantity.", exception.Message);
+        Assert.Contains("Cannot reduce quantity below zero.", exception.Message);
     }
 
     [Fact]
