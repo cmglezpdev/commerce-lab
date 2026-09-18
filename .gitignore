@@ -100,3 +100,6 @@ Desktop.ini
 *.swo
 *~
 .#*
+
+# Local scratch images
+/image.png
