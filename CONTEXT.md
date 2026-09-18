@@ -51,3 +51,15 @@ _Avoid_: producto, snapshot, unidad de stock
 **Checkout**:
 Fase posterior al carrito en la que se vuelven a validar las condiciones de compra y pueden fijarse precio y disponibilidad durante un período limitado.
 _Avoid_: shopping cart, pedido completado
+
+**Cart pricer**:
+Servicio de dominio sin estado que calcula el subtotal de un shopping cart cruzando la identidad de sus cart lines con los precios de un price book. Opera sobre objetos ya en memoria; nunca busca ni accede a datos.
+_Avoid_: calculadora, PriceResolver, servicio de precios
+
+**Price book**:
+Mapa de precios por sellable item que el llamador resuelve y entrega completo al cart pricer. Puede cubrir más artículos que los del carrito. No es el catálogo ni una colección de productos.
+_Avoid_: sellables, catálogo, lista de productos
+
+**Cart pricing result**:
+Resultado explícito de fijar precio al carrito: un subtotal (priced) o la lista completa de sellable items sin precio (failed). Nunca una excepción con datos ni una bandera de error.
+_Avoid_: excepción de precios, resultado parcial
