@@ -63,3 +63,31 @@ _Avoid_: sellables, catalog, product list
 **Cart pricing result**:
 The explicit result of pricing the cart: either a subtotal (priced) or the complete list of sellable items without a price (failed). Never an exception carrying data, nor an error flag.
 _Avoid_: pricing exception, partial result
+
+**Category**:
+A node in the catalog taxonomy used to classify products. A category can have one parent and many children. A product has at most one direct canonical category; membership in ancestor categories is derived from the hierarchy.
+_Avoid_: tag, collection, product
+
+**Collection**:
+A merchandising group of products selected manually or by conditions. A product can appear in multiple collections independently of its canonical category.
+_Avoid_: category, tag
+
+**Tag**:
+Manually assigned product metadata used for organization or selection rules. A tag records a fact chosen by catalog staff; it is not a time-sensitive storefront claim.
+_Avoid_: category, computed badge
+
+**Badge**:
+A customer-facing label such as `New`, `On sale`, or `Hot sale`, derived from current facts and policies. It is recomputed rather than stored as durable product metadata.
+_Avoid_: tag, category
+
+**Promotion**:
+A commercial rule with a validity period, eligibility conditions, a target, and a benefit. It can activate automatically or require a coupon code.
+_Avoid_: discount, coupon
+
+**Discount**:
+The monetary benefit granted by a promotion, such as a percentage or fixed amount. It is one part of a promotion, not the complete rule.
+_Avoid_: promotion, coupon
+
+**Coupon**:
+A code that activates a promotion when entered. Spending or quantity conditions can exist with or without a coupon.
+_Avoid_: promotion, cart condition
