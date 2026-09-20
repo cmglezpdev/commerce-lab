@@ -1,6 +1,6 @@
 namespace Commerce.Domain.Common;
 
-public readonly record struct Quantity
+public sealed record Quantity
 {
     public Quantity(int value)
     {

@@ -1,6 +1,6 @@
 namespace Commerce.Domain.Catalog;
 
-public readonly record struct Sku
+public sealed record Sku
 {
     public Sku(string value)
     {
