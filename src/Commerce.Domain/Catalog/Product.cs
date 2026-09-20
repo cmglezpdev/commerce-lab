@@ -12,10 +12,21 @@ public abstract class Product
     
     public ProductId Id { get; }
     public ProductContent Content { get; private set; }
+    public CategoryId? CategoryId { get; private set; }
 
     public void ChangeContent(ProductContent content)
     {
         ArgumentNullException.ThrowIfNull(content);
         Content = content;
+    }
+
+    public void AssignToCategory(CategoryId categoryId)
+    {
+        CategoryId = categoryId;
+    }
+
+    public void RemoveFromCategory()
+    {
+        CategoryId = null;
     }
 }
