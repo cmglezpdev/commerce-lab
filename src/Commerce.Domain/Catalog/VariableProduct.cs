@@ -2,12 +2,10 @@ using Commerce.Domain.Common;
 
 namespace Commerce.Domain.Catalog;
 
-public sealed class VariableProduct : Product
+public sealed class VariableProduct(ProductId id, ProductContent content) : Product(id, content)
 {
     private readonly List<ProductOption> _options = [];
     private readonly List<ProductVariant> _variants = [];
-
-    public VariableProduct(ProductId id, ProductContent content) : base(id, content) {}
 
     public IReadOnlyList<ProductOption> Options => _options.AsReadOnly();
     public IReadOnlyList<ProductVariant> Variants => _variants.AsReadOnly();
