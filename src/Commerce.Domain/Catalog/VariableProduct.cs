@@ -49,6 +49,9 @@ public sealed class VariableProduct : Product
     string? titleOverride = null,
     string? descriptionOverride = null)
     {
+        ArgumentNullException.ThrowIfNull(sku);
+        ArgumentNullException.ThrowIfNull(price);
+        ArgumentNullException.ThrowIfNull(selection);
         ValidateSelection(selection);
 
         if(_variants.Any(variant =>

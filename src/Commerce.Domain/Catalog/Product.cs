@@ -25,6 +25,7 @@ public abstract class Product
 
     public void AssignToCategory(CategoryId categoryId)
     {
+        ArgumentNullException.ThrowIfNull(categoryId);
         CategoryId = categoryId;
     }
 
@@ -35,11 +36,13 @@ public abstract class Product
 
     public void AddTag(ProductTag tag)
     {
+        ArgumentNullException.ThrowIfNull(tag);
         _tags.Add(tag);
     }
 
     public void RemoveTag(ProductTag tag)
     {
+        ArgumentNullException.ThrowIfNull(tag);
         _tags.Remove(tag);
     }
 }
